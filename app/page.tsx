@@ -9,8 +9,17 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <main className="grid place-content-center md:h-screen">
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        strokeDasharray={"4 2"}
+      />
       <div className="max-w-lg grid gap-4 m-6 sm:m-12">
-        <h1 className="text-4xl text-center mb-12 skew-x-12 skew-y-12">Chomp Pizza</h1>
+        <h1 className="text-6xl text-center text-white italic tracking-widest" style={{
+          WebkitTextStroke: "2px black",
+        }}>CHOMP PIZZA</h1>
         <p>
           Hey, thanks for taking the time to come to this website about my pizza. I spend most of my time thinking about how to make better pizza, except for those moments when actual life hits you in the face and usually snaps me out of it.
         </p>
@@ -37,13 +46,6 @@ export default function Home() {
         </div>
         </div>
       </div>
-      <GridPattern
-        width={30}
-        height={30}
-        x={-1}
-        y={-1}
-        strokeDasharray={"4 2"}
-      />
     </main>
   );
 }

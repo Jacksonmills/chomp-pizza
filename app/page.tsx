@@ -6,8 +6,8 @@ import {
 
 export default function Home() {
   return (
-    <main className="grid place-content-center h-screen">
-      <div className="max-w-lg grid gap-4">
+    <main className="grid place-content-center md:h-screen">
+      <div className="max-w-lg grid gap-4 m-6 sm:m-12">
         <h1 className={cn("text-4xl")}>Chomp Pizza</h1>
         <p>
           Hey, thanks for taking the time to come to this website about my pizza. I spend most of my time thinking about how to make better pizza, except for those moments when actual life hits you in the face, and usually snaps me out of it.

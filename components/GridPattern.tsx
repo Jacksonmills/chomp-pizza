@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { useId } from "react";
+import { cn } from "@/lib/utils";
 
 interface GridPatternProps {
   width?: any;
@@ -52,6 +52,7 @@ export function GridPattern({
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
       {squares && (
         <svg x={x} y={y} className="overflow-visible">
+          <title>Grid pattern squares</title>
           {squares.map(([x, y]) => (
             <rect
               strokeWidth="0"

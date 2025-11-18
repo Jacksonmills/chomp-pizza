@@ -11,7 +11,7 @@ export default function Home() {
 
         <PizzaGrid />
 
-        <div className="aspect-square relative">
+        <div className="aspect-square relative size-full bg-black md:w-[32rem]">
           <Image
             src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI`}
             alt="A very good slice of pizza."

@@ -25,7 +25,7 @@ export default function Home() {
 
         <div className="flex  justify-between">
           <span className="flex gap-2 items-center  text-black">
-            Address:{" "}
+            <span className="sr-only sm:not-sr-only">Address:</span>{" "}
             <a
               href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
               target="_blank"

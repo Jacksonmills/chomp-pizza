@@ -7,14 +7,7 @@ export default function Home() {
   return (
     <main className="grid place-content-center md:h-screen font-bold font-mono">
       <div className="max-w-lg grid gap-4 m-6 sm:m-12 isolate">
-        <h1
-          className="text-6xl text-center text-white italic tracking-widest sr-only"
-          style={{
-            WebkitTextStroke: "2px black",
-          }}
-        >
-          CHOMP PIZZA
-        </h1>
+        <h1 className=" sr-only">Chomp Pizza</h1>
 
         <PizzaGrid />
 
@@ -29,7 +22,7 @@ export default function Home() {
         </div>
 
         <p>I make pizza that I think is worth your $5.</p>
-        
+
         <div className="flex  justify-between">
           <span className="flex gap-2 items-center  text-black">
             Address:{" "}

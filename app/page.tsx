@@ -38,9 +38,9 @@ export default function Home() {
           <div className="flex">
             <Button
               size="icon"
-              variant="default"
+              variant="ghost"
               asChild
-              className="rounded-none bg-white text-black hover:bg-white hover:text-black size-7 [&>svg]:size-5"
+              className="rounded-none size-7 [&>svg]:size-5"
             >
               <a
                 href="https://www.instagram.com/chomp.pizza/"
@@ -52,9 +52,9 @@ export default function Home() {
             </Button>
             <Button
               size="icon"
-              variant="default"
+              variant="ghost"
               asChild
-              className="rounded-none bg-black text-white hover:bg-black hover:text-white size-7 [&>svg]:size-5"
+              className="rounded-none size-7 [&>svg]:size-5"
             >
               <a href="mailto:travis@chomp.pizza">
                 <Mail />

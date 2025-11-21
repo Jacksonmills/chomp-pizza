@@ -80,7 +80,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Instagram />
+                    <Instagram aria-hidden />
                     <span className="sr-only">
                       @chomp.pizza Instagram page, opens in a new tab
                     </span>
@@ -101,7 +101,7 @@ export default function Home() {
                   className="size-7 [&>svg]:size-5"
                 >
                   <a href="mailto:travis@chomp.pizza">
-                    <Mail />
+                    <Mail aria-hidden />
                     <span className="sr-only">
                       Email Chomp Pizza, opens your email client
                     </span>

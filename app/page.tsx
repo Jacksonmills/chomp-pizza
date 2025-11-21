@@ -1,4 +1,5 @@
-import { Instagram, Mail } from "lucide-react";
+import { SiInstagram as Instagram } from "@icons-pack/react-simple-icons";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import { PizzaGrid } from "@/components/PizzaGrid";
 import { Button } from "@/components/ui/button";
@@ -34,15 +35,17 @@ export default function Home() {
               rel="noopener noreferrer"
               className="hover:underline"
             >
-              1710 W. 18th St. <span className="sr-only">Chicago, IL 60608</span>
+              1710 W. 18th St.{" "}
+              <span className="sr-only">Chicago, IL 60608</span>
             </a>
           </span>
           <div className="flex">
+            <Button variant="outline">Test</Button>
             <Button
               size="icon"
               variant="ghost"
               asChild
-              className="rounded-none size-7 [&>svg]:size-5"
+              className="size-7 [&>svg]:size-5"
             >
               <a
                 href="https://www.instagram.com/chomp.pizza/"
@@ -50,16 +53,22 @@ export default function Home() {
                 rel="noopener noreferrer"
               >
                 <Instagram />
+                <span className="sr-only">
+                  @chomp.pizza Instagram page, opens in a new tab
+                </span>
               </a>
             </Button>
             <Button
               size="icon"
               variant="ghost"
               asChild
-              className="rounded-none size-7 [&>svg]:size-5"
+              className="size-7 [&>svg]:size-5"
             >
               <a href="mailto:travis@chomp.pizza">
                 <Mail />
+                <span className="sr-only">
+                  Email Chomp Pizza, opens your email client
+                </span>
               </a>
             </Button>
           </div>

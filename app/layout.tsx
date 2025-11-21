@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { SiInstagram } from "@icons-pack/react-simple-icons";
+import { SiInstagram as Instagram } from "@icons-pack/react-simple-icons";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -83,12 +83,12 @@ export default function RootLayout({
       <TooltipProvider>
         <body className="font-bold font-mono">
           <main className="grid place-content-center md:h-screen">
-            <div className="max-w-lg grid gap-4 m-6 sm:m-12 isolate">
+            <div className="max-w-sm sm:max-w-lg grid gap-4 m-6 sm:m-12 isolate">
               {children}
 
               <footer>
                 <div className="flex  justify-between">
-                  <span className="flex gap-2 items-center  text-black">
+                  <span className="flex gap-2 items-center text-black">
                     <span className="sr-only sm:not-sr-only">Address:</span>{" "}
                     <a
                       href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
@@ -103,7 +103,7 @@ export default function RootLayout({
                     </a>
                   </span>
                   <div className="flex">
-                    <Tooltip delayDuration={0}>
+                    <Tooltip delayDuration={200}>
                       <TooltipTrigger asChild>
                         <Button
                           size="icon"
@@ -116,7 +116,7 @@ export default function RootLayout({
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <SiInstagram aria-hidden />
+                            <Instagram aria-hidden />
                             <span className="sr-only">
                               @chomp.pizza Instagram page, opens in a new tab
                             </span>
@@ -128,7 +128,7 @@ export default function RootLayout({
                       </TooltipContent>
                     </Tooltip>
 
-                    <Tooltip delayDuration={0}>
+                    <Tooltip delayDuration={200}>
                       <TooltipTrigger asChild>
                         <Button
                           size="icon"

@@ -74,10 +74,10 @@ export default function Home() {
   return (
     <>
       <h1 className=" sr-only">Menu | Chomp Pizza | Pilsen Chicago</h1>
-      <Tooltip delayDuration={0}>
+      <Tooltip delayDuration={200}>
         <TooltipTrigger asChild>
           <Button
-            className="h-auto bg-transparent hover:bg-transparent p-0"
+            className="bg-transparent hover:bg-transparent p-0 size-full sm:w-[32rem]"
             asChild
           >
             <Link href="/">
@@ -90,24 +90,27 @@ export default function Home() {
           <p>Home</p>
         </TooltipContent>
       </Tooltip>
-      <div className="text-2xl">
-        <div className="flex justify-between sm:justify-normal gap-2">
+      <div className="sm:text-2xl">
+        <div className="flex justify-between gap-2">
           <h2>PLAIN SLICE</h2>
-          <div className="flex gap-2">
-            <span className="hidden sm:inline">.................</span>$5.00
-          </div>
+          <span className="hidden sm:inline tracking-widest">
+            .................
+          </span>
+          $5.00
         </div>
-        <div className="flex justify-between sm:justify-normal gap-2">
+        <div className="flex justify-between gap-2">
           <h2>PLAIN COFFEE</h2>
-          <div className="flex gap-2">
-            <span className="hidden sm:inline">................</span>$3.00
-          </div>
+          <span className="hidden sm:inline tracking-widest">
+            ................
+          </span>
+          $3.00
         </div>
-        <div className="flex justify-between sm:justify-normal gap-2">
+        <div className="flex justify-between gap-2">
           <h2>SPARKLING WATER</h2>
-          <div className="flex gap-2">
-            <span className="hidden sm:inline">.............</span>$1.50
-          </div>
+          <span className="hidden sm:inline tracking-widest">
+            .............
+          </span>
+          $1.50
         </div>
       </div>
       <p>NO CASH / NO TOPPINGS / NO CREAM / NO SUGAR</p>

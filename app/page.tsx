@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="grid place-content-center md:h-screen font-bold font-mono">
+    <main className="grid place-content-center md:h-screen">
       <div className="max-w-lg grid gap-4 m-6 sm:m-12 isolate">
-        <h1 className=" sr-only">Chomp Pizza</h1>
+        <h1 className=" sr-only">Chomp Pizza | Pilsen Chicago</h1>
 
         <PizzaGrid />
 
         <div className="aspect-square relative size-full bg-black md:w-[32rem]">
           <Image
             src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI`}
-            alt="A very good slice of pizza."
+            alt="Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."
             width={800}
             height={600}
             className="size-full object-cover"
@@ -32,7 +32,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="hover:underline"
             >
-              1710 W. 18th St.
+              1710 W. 18th St. <span className="sr-only">Chicago, IL 60608</span>
             </a>
           </span>
           <div className="flex">

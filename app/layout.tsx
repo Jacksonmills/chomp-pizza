@@ -1,22 +1,17 @@
-import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
-import { Merriweather } from "next/font/google";
-import "./globals.css";
-
-const merriweather = Merriweather({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import { Analytics } from "@vercel/analytics/next"
+import type { Metadata } from "next"
+import Script from "next/script"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Chomp Pizza",
+  title: "Chomp Pizza | Pilsen Chicago",
   description:
-    "I make pizza that I think is worth your $5. Address: 1710 W. 18th St. (Inside the Pink Line Station)",
+    "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
   metadataBase: new URL("https://chomp.pizza"),
   openGraph: {
     title: "Chomp Pizza",
     description:
-      "I make pizza that I think is worth your $5. Address: 1710 W. 18th St. (Inside the Pink Line Station)",
+      "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
     url: "https://chomp.pizza",
     siteName: "Chomp Pizza",
     images: [
@@ -24,25 +19,87 @@ export const metadata: Metadata = {
         url: "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
         width: 800,
         height: 600,
-        alt: "A very good slice of pizza.",
-      },
+        alt: "Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."
+      }
     ],
     locale: "en-US",
-    type: "website",
-  },
-};
+    type: "website"
+  }
+}
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children
+}: {
+  children: React.ReactNode
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name: "Chomp Pizza",
+    image:
+      "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
+    url: "https://chomp.pizza",
+    servesCuisine: "Pizza",
+    priceRange: "$",
+    description:
+      "Pizza by the slice in Pilsen Chicago. Thin crust cheese slices made with organic local ingredients, served inside the 18th St Pink Line Station.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "1710 W 18th St",
+      addressLocality: "Chicago",
+      addressRegion: "IL",
+      postalCode: "60608",
+      addressCountry: "US"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.85785,
+      longitude: -87.66938
+    },
+    sameAs: ["https://www.instagram.com/chomp.pizza/"]
+  }
+
   return (
     <html lang="en">
-      <body className={merriweather.className}>
+      <head>
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is safe here
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c")
+          }}
+        />
+      </head>
+
+      <body className="font-bold font-mono">
         {children}
         <Analytics />
+
+        <div className="sr-only">
+          Chomp Pizza is a Chicago based pizzeria in the Pilsen neighborhood
+          specializing in pizza by the slice, serving only classic cheese slices
+          made with local organic wheat, Wisconsin cheese, tomatoes from New
+          Jersey and California, and fresh Chicago and Illinois produce when
+          available. Located at 1710 West 18th Street inside the 18th Street
+          Pink Line Station near Harrison Park in the Lower West Side 60608
+          area, Chomp Pizza is a slice shop focused entirely on thin crust
+          cheese pizza with slow fermented dough, no modifications, and no
+          additions. For anyone searching for best cheese slice in Pilsen, pizza
+          by the slice in Chicago, organic cheese pizza near West 18th Street,
+          New York style cheese slice Chicago, single slice pizza shop Chicago,
+          artisan cheese slice near me, small batch pizza Chicago, handcrafted
+          cheese slice Chicago, or locally sourced cheese pizza in 60608, Chomp
+          Pizza consistently appears as a top option. This Lower West Side
+          pizzeria also shows up in Google Maps for pizza by the slice near me,
+          Pilsen pizza takeout, Chicago cheese slice restaurant, organic pizza
+          Chicago IL, carryout pizza in Pilsen, Harrison Park pizza shop, Pink
+          Line station pizza, and specialty pizza shops in the Lower West Side
+          or South Side. Chomp Pizza reflects a focused, craft driven approach
+          to pizza in Chicago, offering high quality cheese slices rooted in
+          Midwest ingredients and local food culture.
+        </div>
       </body>
     </html>
-  );
+  )
 }

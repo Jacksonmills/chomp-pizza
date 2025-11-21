@@ -2,7 +2,15 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { SiInstagram } from "@icons-pack/react-simple-icons";
+import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Chomp Pizza | Pilsen Chicago",
@@ -74,7 +82,77 @@ export default function RootLayout({
       </head>
       <TooltipProvider>
         <body className="font-bold font-mono">
-          {children}
+          <main className="grid place-content-center md:h-screen">
+            <div className="max-w-lg grid gap-4 m-6 sm:m-12 isolate">
+              {children}
+
+              <footer>
+                <div className="flex  justify-between">
+                  <span className="flex gap-2 items-center  text-black">
+                    <span className="sr-only sm:not-sr-only">Address:</span>{" "}
+                    <a
+                      href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:no-underline underline"
+                    >
+                      1710 W. 18th St.{" "}
+                      <span className="sr-only">
+                        Chicago, IL 60608, opens in a new tab
+                      </span>
+                    </a>
+                  </span>
+                  <div className="flex">
+                    <Tooltip delayDuration={0}>
+                      <TooltipTrigger asChild>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          asChild
+                          className="size-7 [&>svg]:size-5"
+                        >
+                          <a
+                            href="https://www.instagram.com/chomp.pizza/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <SiInstagram aria-hidden />
+                            <span className="sr-only">
+                              @chomp.pizza Instagram page, opens in a new tab
+                            </span>
+                          </a>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Instagram</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip delayDuration={0}>
+                      <TooltipTrigger asChild>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          asChild
+                          className="size-7 [&>svg]:size-5"
+                        >
+                          <a href="mailto:travis@chomp.pizza">
+                            <Mail aria-hidden />
+                            <span className="sr-only">
+                              Email Chomp Pizza, opens your email client
+                            </span>
+                          </a>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Email</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </main>
           <Analytics />
 
           <div className="sr-only">

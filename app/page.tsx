@@ -61,7 +61,9 @@ export default function Home() {
               className="hover:no-underline underline"
             >
               1710 W. 18th St.{" "}
-              <span className="sr-only">Chicago, IL 60608</span>
+              <span className="sr-only">
+                Chicago, IL 60608, opens in a new tab
+              </span>
             </a>
           </span>
           <div className="flex">

@@ -1,16 +1,36 @@
 import { SiInstagram as Instagram } from "@icons-pack/react-simple-icons";
 import { Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { PizzaGrid } from "@/components/PizzaGrid";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function Home() {
   return (
     <main className="grid place-content-center md:h-screen">
       <div className="max-w-lg grid gap-4 m-6 sm:m-12 isolate">
         <h1 className=" sr-only">Chomp Pizza | Pilsen Chicago</h1>
-
-        <PizzaGrid />
+        <Tooltip delayDuration={0}>
+          <TooltipTrigger asChild>
+            <Button
+              className="h-auto bg-transparent hover:bg-transparent w-fit p-0"
+              asChild
+            >
+              <Link href="/menu">
+                <PizzaGrid />
+                <span className="sr-only">View Menu</span>
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>View Menu</p>
+          </TooltipContent>
+        </Tooltip>
 
         <div className="aspect-square relative size-full bg-black md:w-[32rem]">
           <Image
@@ -24,7 +44,12 @@ export default function Home() {
           />
         </div>
 
-        <p>I make pizza that I think is worth your $5.</p>
+        <p>
+          I make pizza that I think is worth your $5.{" "}
+          <Link href="/menu" className="hover:no-underline underline">
+            Menu
+          </Link>
+        </p>
 
         <div className="flex  justify-between">
           <span className="flex gap-2 items-center  text-black">
@@ -33,43 +58,58 @@ export default function Home() {
               href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
+              className="hover:no-underline underline"
             >
               1710 W. 18th St.{" "}
               <span className="sr-only">Chicago, IL 60608</span>
             </a>
           </span>
           <div className="flex">
-            <Button
-              size="icon"
-              variant="ghost"
-              asChild
-              className="size-7 [&>svg]:size-5"
-            >
-              <a
-                href="https://www.instagram.com/chomp.pizza/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Instagram />
-                <span className="sr-only">
-                  @chomp.pizza Instagram page, opens in a new tab
-                </span>
-              </a>
-            </Button>
-            <Button
-              size="icon"
-              variant="ghost"
-              asChild
-              className="size-7 [&>svg]:size-5"
-            >
-              <a href="mailto:travis@chomp.pizza">
-                <Mail />
-                <span className="sr-only">
-                  Email Chomp Pizza, opens your email client
-                </span>
-              </a>
-            </Button>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  asChild
+                  className="size-7 [&>svg]:size-5"
+                >
+                  <a
+                    href="https://www.instagram.com/chomp.pizza/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Instagram />
+                    <span className="sr-only">
+                      @chomp.pizza Instagram page, opens in a new tab
+                    </span>
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Instagram</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  asChild
+                  className="size-7 [&>svg]:size-5"
+                >
+                  <a href="mailto:travis@chomp.pizza">
+                    <Mail />
+                    <span className="sr-only">
+                      Email Chomp Pizza, opens your email client
+                    </span>
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Email</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
       </div>

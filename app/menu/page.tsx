@@ -91,21 +91,21 @@ export default function Home() {
         </TooltipContent>
       </Tooltip>
       <div className="text-2xl">
-        <div className="flex justify-between sm:justify-normal">
+        <div className="flex justify-between sm:justify-normal gap-2">
           <h2>PLAIN SLICE</h2>
-          <div>
+          <div className="flex gap-2">
             <span className="hidden sm:inline">.................</span>$5.00
           </div>
         </div>
-        <div className="flex justify-between sm:justify-normal">
+        <div className="flex justify-between sm:justify-normal gap-2">
           <h2>PLAIN COFFEE</h2>
-          <div>
+          <div className="flex gap-2">
             <span className="hidden sm:inline">................</span>$3.00
           </div>
         </div>
-        <div className="flex justify-between sm:justify-normal">
+        <div className="flex justify-between sm:justify-normal gap-2">
           <h2>SPARKLING WATER</h2>
-          <div>
+          <div className="flex gap-2">
             <span className="hidden sm:inline">.............</span>$1.50
           </div>
         </div>

@@ -40,7 +40,6 @@ export default function Home() {
             </a>
           </span>
           <div className="flex">
-            <Button variant="outline">Test</Button>
             <Button
               size="icon"
               variant="ghost"

@@ -15,9 +15,11 @@ export default function Home() {
           <Image
             src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI`}
             alt="Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."
-            width={800}
-            height={600}
+            width={512}
+            height={512}
             className="size-full object-cover"
+            fetchPriority="high"
+            loading="lazy"
           />
         </div>
 

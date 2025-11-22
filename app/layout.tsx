@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "PizzaRestaurant",
+    "@type": "Restaurant",
     name: "Chomp Pizza",
     image:
       "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",

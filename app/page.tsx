@@ -17,6 +17,7 @@ export default function Home() {
           className="size-full object-cover"
           fetchPriority="high"
           loading="lazy"
+          sizes={"(max-width: 768px) 100vw, 512px"}
         />
       </div>
 

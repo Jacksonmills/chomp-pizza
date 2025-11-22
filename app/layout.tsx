@@ -72,38 +72,35 @@ export default function RootLayout({
         closes: "16:00",
       },
     ],
-
     sameAs: ["https://www.instagram.com/chomp.pizza/"],
-  };
-
-  const menuJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Menu",
-    name: "Chomp Pizza Menu",
-    hasMenuSection: [
-      {
-        "@type": "MenuSection",
-        name: "Main",
-        hasMenuItem: [
-          {
-            "@type": "MenuItem",
-            name: "Plain Slice",
-            description: "Cheese slice of pizza",
-            offers: { "@type": "Offer", price: "5.00", priceCurrency: "USD" },
-          },
-          {
-            "@type": "MenuItem",
-            name: "Plain Coffee",
-            offers: { "@type": "Offer", price: "3.00", priceCurrency: "USD" },
-          },
-          {
-            "@type": "MenuItem",
-            name: "Sparkling Water",
-            offers: { "@type": "Offer", price: "1.50", priceCurrency: "USD" },
-          },
-        ],
-      },
-    ],
+    hasMenu: {
+      "@type": "Menu",
+      hasMenuSection: [
+        {
+          "@type": "MenuSection",
+          name: "Main",
+          hasMenuItem: [
+            {
+              "@type": "MenuItem",
+              name: "Plain Slice",
+              description: "Cheese slice of pizza",
+              offers: { "@type": "Offer", price: "5.00", priceCurrency: "USD" },
+            },
+            {
+              "@type": "MenuItem",
+              name: "Plain Coffee",
+              offers: { "@type": "Offer", price: "3.00", priceCurrency: "USD" },
+            },
+            {
+              "@type": "MenuItem",
+              name: "Sparkling Water",
+              offers: { "@type": "Offer", price: "1.50", priceCurrency: "USD" },
+            },
+          ],
+        },
+      ],
+      inLanguage: "English",
+    },
   };
 
   return (
@@ -115,15 +112,6 @@ export default function RootLayout({
           // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
-
-        <Script
-          id="menu-json-ld"
-          type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(menuJsonLd).replace(/</g, "\\u003c"),
           }}
         />
       </head>

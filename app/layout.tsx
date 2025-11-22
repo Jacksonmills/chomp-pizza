@@ -1,7 +1,9 @@
-import { Analytics } from "@vercel/analytics/next"
-import type { Metadata } from "next"
-import Script from "next/script"
-import "./globals.css"
+import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
+import Script from "next/script";
+import "./globals.css";
+import Footer from "@/components/footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Chomp Pizza | Pilsen Chicago",
@@ -19,27 +21,27 @@ export const metadata: Metadata = {
         url: "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
         width: 800,
         height: 600,
-        alt: "Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."
-      }
+        alt: "Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago.",
+      },
     ],
     locale: "en-US",
-    type: "website"
-  }
-}
+    type: "website",
+  },
+};
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": "PizzaRestaurant",
     name: "Chomp Pizza",
     image:
       "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
     url: "https://chomp.pizza",
-    servesCuisine: "Pizza",
+    servesCuisine: ["Pizza", "Coffee", "Water"],
     priceRange: "$",
     description:
       "Pizza by the slice in Pilsen Chicago. Thin crust cheese slices made with organic local ingredients, served inside the 18th St Pink Line Station.",
@@ -49,15 +51,60 @@ export default function RootLayout({
       addressLocality: "Chicago",
       addressRegion: "IL",
       postalCode: "60608",
-      addressCountry: "US"
+      addressCountry: "US",
     },
     geo: {
       "@type": "GeoCoordinates",
       latitude: 41.85785,
-      longitude: -87.66938
+      longitude: -87.66938,
     },
-    sameAs: ["https://www.instagram.com/chomp.pizza/"]
-  }
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday"],
+        opens: "12:00",
+        closes: "16:00",
+      },
+    ],
+
+    sameAs: ["https://www.instagram.com/chomp.pizza/"],
+  };
+
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: "Chomp Pizza Menu",
+    hasMenuSection: [
+      {
+        "@type": "MenuSection",
+        name: "Main",
+        hasMenuItem: [
+          {
+            "@type": "MenuItem",
+            name: "Plain Slice",
+            description: "Cheese slice of pizza",
+            offers: { "@type": "Offer", price: "5.00", priceCurrency: "USD" },
+          },
+          {
+            "@type": "MenuItem",
+            name: "Plain Coffee",
+            offers: { "@type": "Offer", price: "3.00", priceCurrency: "USD" },
+          },
+          {
+            "@type": "MenuItem",
+            name: "Sparkling Water",
+            offers: { "@type": "Offer", price: "1.50", priceCurrency: "USD" },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <html lang="en">
@@ -65,41 +112,59 @@ export default function RootLayout({
         <Script
           id="json-ld"
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is safe here
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c")
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        <Script
+          id="menu-json-ld"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(menuJsonLd).replace(/</g, "\\u003c"),
           }}
         />
       </head>
 
-      <body className="font-bold font-mono">
-        {children}
-        <Analytics />
+      <TooltipProvider>
+        <body className="font-bold font-mono">
+          <main className="grid place-content-center md:h-screen">
+            <div className="max-w-sm sm:max-w-lg grid gap-4 m-6 sm:m-12 isolate">
+              {children}
+              <Footer />
+            </div>
+          </main>
 
-        <div className="sr-only">
-          Chomp Pizza is a Chicago based pizzeria in the Pilsen neighborhood
-          specializing in pizza by the slice, serving only classic cheese slices
-          made with local organic wheat, Wisconsin cheese, tomatoes from New
-          Jersey and California, and fresh Chicago and Illinois produce when
-          available. Located at 1710 West 18th Street inside the 18th Street
-          Pink Line Station near Harrison Park in the Lower West Side 60608
-          area, Chomp Pizza is a slice shop focused entirely on thin crust
-          cheese pizza with slow fermented dough, no modifications, and no
-          additions. For anyone searching for best cheese slice in Pilsen, pizza
-          by the slice in Chicago, organic cheese pizza near West 18th Street,
-          New York style cheese slice Chicago, single slice pizza shop Chicago,
-          artisan cheese slice near me, small batch pizza Chicago, handcrafted
-          cheese slice Chicago, or locally sourced cheese pizza in 60608, Chomp
-          Pizza consistently appears as a top option. This Lower West Side
-          pizzeria also shows up in Google Maps for pizza by the slice near me,
-          Pilsen pizza takeout, Chicago cheese slice restaurant, organic pizza
-          Chicago IL, carryout pizza in Pilsen, Harrison Park pizza shop, Pink
-          Line station pizza, and specialty pizza shops in the Lower West Side
-          or South Side. Chomp Pizza reflects a focused, craft driven approach
-          to pizza in Chicago, offering high quality cheese slices rooted in
-          Midwest ingredients and local food culture.
-        </div>
-      </body>
+          <Analytics />
+
+          <div className="sr-only">
+            Chomp Pizza is a Chicago based pizzeria in the Pilsen neighborhood
+            specializing in pizza by the slice, serving only classic cheese
+            slices made with local organic wheat, Wisconsin cheese, tomatoes
+            from New Jersey and California, and fresh Chicago and Illinois
+            produce when available. Located at 1710 West 18th Street inside the
+            18th Street Pink Line Station near Harrison Park in the Lower West
+            Side 60608 area, Chomp Pizza is a slice shop focused entirely on
+            thin crust cheese pizza with slow fermented dough, no modifications,
+            and no additions. For anyone searching for best cheese slice in
+            Pilsen, pizza by the slice in Chicago, organic cheese pizza near
+            West 18th Street, New York style cheese slice Chicago, single slice
+            pizza shop Chicago, artisan cheese slice near me, small batch pizza
+            Chicago, handcrafted cheese slice Chicago, or locally sourced cheese
+            pizza in 60608, Chomp Pizza consistently appears as a top option.
+            This Lower West Side pizzeria also shows up in Google Maps for pizza
+            by the slice near me, Pilsen pizza takeout, Chicago cheese slice
+            restaurant, organic pizza Chicago IL, carryout pizza in Pilsen,
+            Harrison Park pizza shop, Pink Line station pizza, and specialty
+            pizza shops in the Lower West Side or South Side. Chomp Pizza
+            reflects a focused, craft driven approach to pizza in Chicago,
+            offering high quality cheese slices rooted in Midwest ingredients
+            and local food culture.
+          </div>
+        </body>
+      </TooltipProvider>
     </html>
-  )
+  );
 }

@@ -22,7 +22,7 @@ export default function Footer() {
           </a>
         </span>
         <div className="flex">
-          <Tooltip delayDuration={200}>
+          <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
@@ -47,7 +47,7 @@ export default function Footer() {
             </TooltipContent>
           </Tooltip>
 
-          <Tooltip delayDuration={200}>
+          <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 size="icon"

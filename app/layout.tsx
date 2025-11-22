@@ -2,8 +2,15 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+
+import { Fira_Code } from "next/font/google";
 import Footer from "@/components/footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
+
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Chomp Pizza | Pilsen Chicago",
@@ -117,9 +124,9 @@ export default function RootLayout({
       </head>
 
       <TooltipProvider>
-        <body className="font-bold font-mono">
+        <body className={`${firaCode.variable} font-bold font-mono`}>
           <main className="grid place-content-center md:h-screen">
-            <div className="max-w-sm sm:max-w-lg grid gap-4 m-6 sm:m-12 isolate">
+            <div className="isolate m-6 grid max-w-sm gap-4 sm:m-12 sm:max-w-lg">
               {children}
               <Footer />
             </div>

@@ -1,40 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import { PizzaGrid } from "@/components/PizzaGrid";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Checkerboard } from "@/components/checkerboard";
 
 export default function Home() {
   return (
     <>
       <h1 className=" sr-only">Chomp Pizza | Pilsen Chicago</h1>
-      <div className="flex justify-between items-end">
-        <Tooltip delayDuration={200}>
-          <TooltipTrigger asChild>
-            <Button
-              className="h-auto bg-transparent hover:bg-transparent p-0 w-fit"
-              asChild
-            >
-              <Link href="/menu">
-                <div className="size-36">
-                  <PizzaGrid />
-                </div>
-                <span className="sr-only">View Menu</span>
-              </Link>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>View Menu</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Link href="/menu" className="hover:no-underline underline">
-          Menu
-        </Link>
+      <div className="size-36">
+        <Checkerboard />
       </div>
       <div className="aspect-square relative size-full bg-black sm:w-[32rem]">
         <Image

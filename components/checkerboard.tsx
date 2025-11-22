@@ -1,4 +1,4 @@
-export function PizzaGrid() {
+export function Checkerboard() {
   return (
     <div
       className="size-full"

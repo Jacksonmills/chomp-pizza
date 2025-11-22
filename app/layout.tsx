@@ -2,15 +2,8 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { SiInstagram as Instagram } from "@icons-pack/react-simple-icons";
-import { Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import Footer from "@/components/footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Chomp Pizza | Pilsen Chicago",
@@ -43,12 +36,12 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": "PizzaRestaurant",
     name: "Chomp Pizza",
     image:
       "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
     url: "https://chomp.pizza",
-    servesCuisine: "Pizza",
+    servesCuisine: ["Pizza", "Coffee", "Water"],
     priceRange: "$",
     description:
       "Pizza by the slice in Pilsen Chicago. Thin crust cheese slices made with organic local ingredients, served inside the 18th St Pink Line Station.",
@@ -65,7 +58,52 @@ export default function RootLayout({
       latitude: 41.85785,
       longitude: -87.66938,
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday"],
+        opens: "12:00",
+        closes: "16:00",
+      },
+    ],
+
     sameAs: ["https://www.instagram.com/chomp.pizza/"],
+  };
+
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: "Chomp Pizza Menu",
+    hasMenuSection: [
+      {
+        "@type": "MenuSection",
+        name: "Main",
+        hasMenuItem: [
+          {
+            "@type": "MenuItem",
+            name: "Plain Slice",
+            description: "Cheese slice of pizza",
+            offers: { "@type": "Offer", price: "5.00", priceCurrency: "USD" },
+          },
+          {
+            "@type": "MenuItem",
+            name: "Plain Coffee",
+            offers: { "@type": "Offer", price: "3.00", priceCurrency: "USD" },
+          },
+          {
+            "@type": "MenuItem",
+            name: "Sparkling Water",
+            offers: { "@type": "Offer", price: "1.50", priceCurrency: "USD" },
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -74,85 +112,31 @@ export default function RootLayout({
         <Script
           id="json-ld"
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is safe here
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+
+        <Script
+          id="menu-json-ld"
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ignore for JSON-LD
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(menuJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
       </head>
+
       <TooltipProvider>
         <body className="font-bold font-mono">
           <main className="grid place-content-center md:h-screen">
             <div className="max-w-sm sm:max-w-lg grid gap-4 m-6 sm:m-12 isolate">
               {children}
-
-              <footer>
-                <div className="flex  justify-between">
-                  <span className="flex gap-2 items-center text-black">
-                    <span className="sr-only sm:not-sr-only">Address:</span>{" "}
-                    <a
-                      href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:no-underline underline"
-                    >
-                      1710 W. 18th St.{" "}
-                      <span className="sr-only">
-                        Chicago, IL 60608, opens in a new tab
-                      </span>
-                    </a>
-                  </span>
-                  <div className="flex">
-                    <Tooltip delayDuration={200}>
-                      <TooltipTrigger asChild>
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          asChild
-                          className="size-7 [&>svg]:size-5"
-                        >
-                          <a
-                            href="https://www.instagram.com/chomp.pizza/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Instagram aria-hidden />
-                            <span className="sr-only">
-                              @chomp.pizza Instagram page, opens in a new tab
-                            </span>
-                          </a>
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Instagram</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip delayDuration={200}>
-                      <TooltipTrigger asChild>
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          asChild
-                          className="size-7 [&>svg]:size-5"
-                        >
-                          <a href="mailto:travis@chomp.pizza">
-                            <Mail aria-hidden />
-                            <span className="sr-only">
-                              Email Chomp Pizza, opens your email client
-                            </span>
-                          </a>
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Email</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </div>
-                </div>
-              </footer>
+              <Footer />
             </div>
           </main>
+
           <Analytics />
 
           <div className="sr-only">

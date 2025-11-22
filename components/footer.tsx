@@ -6,14 +6,14 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 export default function Footer() {
   return (
     <footer>
-      <div className="flex  justify-between">
-        <span className="flex gap-2 items-center text-black">
+      <div className="flex justify-between">
+        <span className="flex items-center gap-2 text-black">
           <span className="sr-only sm:not-sr-only">Address:</span>{" "}
           <a
             href="https://maps.app.goo.gl/fqH2ci68i8hoTyWP9"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:no-underline underline"
+            className="underline hover:no-underline"
           >
             1710 W. 18th St.{" "}
             <span className="sr-only">
@@ -35,7 +35,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Instagram aria-hidden />
+                  <Instagram aria-hidden className="size-7" />
                   <span className="sr-only">
                     @chomp.pizza Instagram page, opens in a new tab
                   </span>
@@ -56,7 +56,7 @@ export default function Footer() {
                 className="size-7 [&>svg]:size-5"
               >
                 <a href="mailto:travis@chomp.pizza">
-                  <Mail aria-hidden />
+                  <Mail aria-hidden className="size-7" />
                   <span className="sr-only">
                     Email Chomp Pizza, opens your email client
                   </span>

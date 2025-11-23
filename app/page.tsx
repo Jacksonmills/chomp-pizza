@@ -4,7 +4,9 @@ import { Checkerboard } from "@/components/checkerboard";
 export default function Home() {
   return (
     <>
-      <h1 className="sr-only">Chomp Pizza | Pilsen Chicago</h1>
+      <h1 className="sr-only" data-nosnippet>
+        Chomp Pizza | Pilsen Chicago
+      </h1>
       <div className="size-36">
         <Checkerboard />
       </div>

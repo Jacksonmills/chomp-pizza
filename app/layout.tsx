@@ -13,7 +13,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Chomp Pizza | Pilsen Chicago",
+  title: "Chomp Pizza",
   description:
     "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
   metadataBase: new URL("https://chomp.pizza"),

@@ -17,23 +17,50 @@ export const metadata: Metadata = {
   description:
     "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
   metadataBase: new URL("https://chomp.pizza"),
+  keywords: [
+    "Pizza",
+    "Chomp Pizza",
+    "Pizza by the slice Chicago",
+    "Pilsen pizza",
+    "Chicago pizza",
+    "Thin crust pizza Chicago",
+    "Organic pizza Chicago",
+    "Cheese slice Pilsen",
+    "Pizza takeout Chicago",
+    "Artisan pizza Chicago",
+    "Pizza inside Pink Line station",
+  ],
+  themeColor: "#ffffff",
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://chomp.pizza",
     title: "Chomp Pizza",
     description:
       "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
-    url: "https://chomp.pizza",
     siteName: "Chomp Pizza",
     images: [
       {
-        url: "https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI",
-        width: 800,
-        height: 600,
-        alt: "Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago.",
+        url: "/opengraph-image.jpg",
+        width: 280,
+        height: 280,
+        alt: "Chomp Pizza",
       },
     ],
-    locale: "en-US",
-    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chomp Pizza",
+    description:
+      "I make pizza that I think is worth your $5. Address: 1710 W 18th St, Chicago, IL 60608 (Inside the Pink Line Station)",
+    images: ["/opengraph-image.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

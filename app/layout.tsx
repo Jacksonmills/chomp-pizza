@@ -134,7 +134,7 @@ export default function RootLayout({
 
           <Analytics />
 
-          <div className="sr-only">
+          <div className="sr-only" data-nosnippet>
             Chomp Pizza is a Chicago based pizzeria in the Pilsen neighborhood
             specializing in pizza by the slice, serving only classic cheese
             slices made with local organic wheat, Wisconsin cheese, tomatoes

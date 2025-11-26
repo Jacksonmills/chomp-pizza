@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function Footer() {
   return (
-    <footer data-nosnippet>
+    <footer>
       <div className="flex justify-between">
         <span className="flex items-center gap-2 text-black">
           <span className="sr-only sm:not-sr-only">Address:</span>{" "}
@@ -17,7 +17,7 @@ export default function Footer() {
           >
             1710 W. 18th St.{" "}
             <span className="sr-only">
-              Chicago, IL 60608, opens in a new tab
+              Chicago, IL 60608<span data-nosnippet>, opens in a new tab</span>
             </span>
           </a>
         </span>
@@ -34,6 +34,7 @@ export default function Footer() {
                   href="https://www.instagram.com/chomp.pizza/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-nosnippet
                 >
                   <Instagram aria-hidden className="size-7" />
                   <span className="sr-only">
@@ -55,7 +56,7 @@ export default function Footer() {
                 asChild
                 className="size-7 [&>svg]:size-5"
               >
-                <a href="mailto:travis@chomp.pizza">
+                <a href="mailto:travis@chomp.pizza" data-nosnippet>
                   <Mail aria-hidden className="size-7" />
                   <span className="sr-only">
                     Email Chomp Pizza, opens your email client

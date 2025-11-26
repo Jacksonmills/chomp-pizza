@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer data-nosnippet>
       <div className="flex justify-between">
         <span className="flex items-center gap-2 text-black">
           <span className="sr-only sm:not-sr-only">Address:</span>{" "}

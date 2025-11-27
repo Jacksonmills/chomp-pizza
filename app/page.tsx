@@ -8,7 +8,10 @@ export default function Home() {
       <div className="size-36">
         <Checkerboard />
       </div>
-      <div className="relative aspect-square size-full bg-black sm:w-lg">
+      <div
+        className="relative aspect-square size-full bg-black sm:w-lg"
+        data-nosnippet
+      >
         <Image
           src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI`}
           alt="Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."

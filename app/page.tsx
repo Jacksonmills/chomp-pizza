@@ -8,18 +8,14 @@ export default function Home() {
       <div className="size-36">
         <Checkerboard />
       </div>
-      <div
-        className="relative aspect-square size-full bg-black sm:w-lg"
-        data-nosnippet
-      >
+      <div className="size-full bg-black sm:w-lg" data-nosnippet>
         <Image
-          src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310BpMxudO6dvCcgubOXQk7PYzNaLV8htZ5sSHfI`}
+          src={`https://dkoxmv7ca6.ufs.sh/f/s86AdQWJ310B82ANlsHfp0yHVclGQLBU3RSJ4vnw7iabITz2`}
           alt="Thin crust cheese pizza slice with tomato spots on a paper plate inside Chomp Pizza in Pilsen Chicago."
           width={512}
           height={512}
-          className="size-full object-cover"
           fetchPriority="high"
-          loading="lazy"
+          loading="eager"
           sizes={"(max-width: 768px) 100vw, 512px"}
         />
       </div>
